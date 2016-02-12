@@ -1,6 +1,11 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+InfoModal = require('./InfoModal');
 
 var CatalogItem = React.createClass({
+  lauchModal: function() {
+     $(ReactDOM.findDOMNode(this.refs.modal)).modal();
+  },
   render: function() {
     return (
       <div className="col-md-4 card">
@@ -10,7 +15,15 @@ var CatalogItem = React.createClass({
           <p>
             {this.props.summary}
           </p>
-          <a href="#" className="btn btn-primary" title={"Buy " + this.props.cost}>{"Buy " + this.props.cost + " Rs"}</a>
+          <button
+            className="btn btn-primary"
+            onClick={this.lauchModal}
+            title={"Buy " + this.props.cost}> {"Buy " + this.props.cost + " Rs"}
+          </button>
+          <InfoModal
+            title={this.props.title}
+            content={this.props.summary}
+            ref="modal"/>
         </div>
       </div>
     );
