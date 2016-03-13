@@ -1,10 +1,20 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-InfoModal = require('./InfoModal');
+var InfoModal = require('./InfoModal');
 
 var CatalogItem = React.createClass({
-  lauchModal: function() {
-     $(ReactDOM.findDOMNode(this.refs.modal)).modal();
+  getInitialState: function(){
+      return {view: {showModal: false}}
+  },
+  handleSubmitModal: function() {
+    console.log('Submitted');
+    this.setState({view: {showModal: false}});
+  },
+  handleHideModal: function(){
+    this.setState({view: {showModal: false}})
+  },
+  handleShowModal: function(){
+    this.setState({view: {showModal: true}})
   },
   render: function() {
     return (
@@ -17,13 +27,14 @@ var CatalogItem = React.createClass({
           </p>
           <button
             className="btn btn-primary"
-            onClick={this.lauchModal}
+            onClick={this.handleShowModal}
             title={"Buy " + this.props.cost}> {"Buy " + this.props.cost + " Rs"}
           </button>
-          <InfoModal
-            title={this.props.title}
-            content={this.props.summary}
-            ref="modal"/>
+
+          {this.state.view.showModal ?
+            <InfoModal handleHideModal={this.handleHideModal} title={this.props.title} content={this.props.summary}
+            handleSubmitModal={this.handleSubmitModal}/> : null}
+
         </div>
       </div>
     );
