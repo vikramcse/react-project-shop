@@ -12,6 +12,7 @@ var Catalog = React.createClass({
           children.push (
             <CatalogItem
               key={k}
+              itemId={k}
               title={this.props.catalog[k].title}
               img={this.props.catalog[k].url}
               summary={this.props.catalog[k].summary}
