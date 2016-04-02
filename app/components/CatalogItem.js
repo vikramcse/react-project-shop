@@ -7,7 +7,7 @@ var Firebase = require('firebase');
 
 var CatalogItem = React.createClass({
   getInitialState: function(){
-      return {view: {showModal: false}}
+    return {view: {showModal: false}}
   },
   componentWillMount: function() {
     this.fb = new Firebase(ref + 'orders/');

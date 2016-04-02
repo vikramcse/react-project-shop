@@ -1,12 +1,24 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 let InfoModal = React.createClass({
     componentDidMount(){
-        $(this.getDOMNode()).modal('show');
-        $(this.getDOMNode()).on('hidden.bs.modal', this.props.handleHideModal);
+      $(ReactDOM.findDOMNode(this.refs.modal)).modal('show');
+      $(ReactDOM.findDOMNode(this.refs.modal)).on('hidden.bs.modal', this.props.handleHideModal);
     },
     saveUser: function() {
-      this.props.handleSubmitModal(this.state);
+      var data = this.state;
+      var flag = true;
+      for (var k in data) {
+        if (!data[k]) {
+          flag = false;
+        }
+      }
+
+      if (flag) {
+        this.props.handleSubmitModal(data);
+        alert("Form contents cant not be empty");
+      }
     },
     getInitialState: function() {
       return {
@@ -43,7 +55,7 @@ let InfoModal = React.createClass({
     },
     render(){
       return (
-          <div className="modal fade">
+          <div className="modal fade" ref="modal">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -103,7 +115,7 @@ let InfoModal = React.createClass({
                   <button type="button"
                     className="btn btn-primary"
                     data-dismiss="modal"
-                    onClick={this.saveUser}> Save changes </button>
+                    onClick={this.saveUser}>Order</button>
                 </div>
               </div>
             </div>
