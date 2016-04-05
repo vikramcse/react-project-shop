@@ -17,12 +17,14 @@ let InfoModal = React.createClass({
 
       if (flag) {
         this.props.handleSubmitModal(data);
+      } else {
         alert("Form contents cant not be empty");
       }
     },
     getInitialState: function() {
       return {
         id: this.props.itemId,
+        productName: this.props.title,
         name: '',
         surname: '',
         mobile: '',
