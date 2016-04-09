@@ -34,7 +34,7 @@ var CatalogItem = React.createClass({
           <button
             className="btn btn-primary"
             onClick={this.handleShowModal}
-            title={"Buy " + this.props.cost}> {"Buy " + this.props.cost + " Rs"}
+            title={"Buy " + this.props.cost}> {"Order " + this.props.cost + " Rs"}
           </button>
 
           {this.state.view.showModal ?

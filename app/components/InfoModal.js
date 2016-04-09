@@ -28,7 +28,8 @@ let InfoModal = React.createClass({
         name: '',
         surname: '',
         mobile: '',
-        address: ''
+        address: '',
+        date: Date()
       };
     },
     handleNameChange: function(event) {
@@ -74,7 +75,7 @@ let InfoModal = React.createClass({
                           className="form-control"
                           id="name"
                           value={this.state.name}
-                          placeholder="Enter name"/>
+                          placeholder="Enter name" required/>
                       </div>
                     </div>
                     <div className="form-group">
