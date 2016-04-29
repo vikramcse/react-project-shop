@@ -65,6 +65,9 @@ let InfoModal = React.createClass({
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 className="modal-title">{this.props.title}</h4>
                 </div>
+                <div className="modal-header">
+                  <h5 className="modal-title">{this.props.content}</h5>
+                </div>
                 <div className="modal-body">
                   <form className="form-horizontal" role="form">
                     <div className="form-group">
