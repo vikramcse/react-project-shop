@@ -24,27 +24,26 @@ var CatalogItem = React.createClass({
   },
   render: function() {
     return (
-      <div className="col-md-4 card">
-        <div>
+      <div className="col-sm-6 col-md-4">
+        <div className="thumbnail card">
           <img src={this.props.img}/>
-          <h2>{this.props.title}</h2>
-          <p>
-            {this.props.summary}
-          </p>
-          <button
-            className="btn btn-primary"
-            onClick={this.handleShowModal}
-            title={"Buy " + this.props.cost}> {"Order " + this.props.cost + " Rs"}
-          </button>
-
-          {this.state.view.showModal ?
-            <InfoModal
-              itemId={this.props.itemId}
-              handleHideModal={this.handleHideModal}
-              title={this.props.title}
-              content={this.props.summary}
-              handleSubmitModal={this.handleSubmitModal}/> : null}
-
+          <div className="caption">
+            <h3>{this.props.title}</h3>
+            <p>
+              <button
+                className="btn btn-primary"
+                onClick={this.handleShowModal}
+                title={"Buy " + this.props.cost}> {"Order " + this.props.cost + " Rs"}
+              </button>
+            </p>
+            {this.state.view.showModal ?
+              <InfoModal
+                itemId={this.props.itemId}
+                handleHideModal={this.handleHideModal}
+                title={this.props.title}
+                content={this.props.summary}
+                handleSubmitModal={this.handleSubmitModal}/> : null}
+          </div>
         </div>
       </div>
     );
